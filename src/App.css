@@ -1,38 +1,174 @@
-.App {
-  text-align: center;
+.homePageWrapper{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.formWrapper{
+  background: palegreen;
+  border-radius: 10px;
+  padding: 20px;
+  width: 400px;
+  max-width: 90%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+footer{
+  position: fixed;
+  bottom: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+footer a{
+  /* color: #4aee88; */
+  color: #C74B50;
+  
+}
+
+.inputGroup{
   display: flex;
   flex-direction: column;
+}
+
+.mainLabel{
+  margin-bottom: 20px;
+  margin-top: 0;
+  color: black;
+}
+
+.homePageLogo{
+  height: 80px;
+  margin-bottom: 30px;
+  color: yellow;
+}
+
+.inputBox{
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  margin-bottom: 14px;
+  background: #eee;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn{
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid black;
+}
+
+.joinBtn{
+  background: #4aed88;
+  width: 100px;
+  margin-left: auto;
+}
+
+.joinBtn:hover{
+  background: #2b824c;
+}
+
+.createInfo{
+  margin: 0 auto;
+  margin-top: 20px;
+  color: black;
+}
+
+.createNewBtn{
+  color: black;
+  text-decoration: none;
+  border-bottom: 1px solid black;
+   transition: all 0.3s ease-in-out;
+   font-weight: bolder;
+}
+
+.createNewBtn:hover, footer a:hover  {
+color: #368654;
+border-color: #368654;
+}
+
+/* ----------------------- Editor Page  ------------------------ */
+
+.mainWrap{
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  /* height: 100vh; */
+  /* border: 2px solid yellow; */
+}
+
+/* ----- left ------- */
+
+.left{
+  background: #fff;
+  padding: 16px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  /* border: 2px solid green; */
+}
+
+.leftInner{
+  flex: 1;
+}
+
+.usersList{
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.client{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.userName{
+  margin-top: 10px;
+  color: black;
 }
+
+.logo{
+  border-bottom: 1px solid wheat;
+  padding-bottom: 10px;
+}
+
+.logoImage{
+  height: 60px;
+  width: 100%;
+}
+
+#connected_user{
+  color: black;
+}
+
+.leaveBtn{
+  margin-top: 10px;
+  background: #4aed88;
+  width: 100%;
+  color: black;
+}
+
+.leaveBtn:hover{
+  color: #368654;
+  border-color: #368654;
+}
+
+/* ---------------- Right---------------- */
+
+.CodeMirror{
+  background: #eee !important;
+  min-height: calc(100vh - 20px);
+  font-size: 15px;
+  line-height: 1.4;
+  padding-top: 20px;
+}
+
+ 
