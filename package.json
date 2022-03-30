@@ -49,5 +49,6 @@
   "devDependencies": {
     "@types/codemirror": "^5.60.5",
     "nodemon": "^2.0.15"
-  }
+  },
+  "main": "server.js"
 }
