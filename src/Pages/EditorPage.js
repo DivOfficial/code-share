@@ -14,13 +14,20 @@ import { Socket } from "socket.io-client";
 
 const EditorPage = () => {
   // Socket connection initialization
-
-  const socketRef = useRef(null);
-  const { roomId } = useParams();
-  const codeRef = useRef(null);
-  const location = useLocation();
-  const reactNavigator = useNavigate();
   const [clients, setClients] = useState([]);
+
+  //  const [clients, setClients] = useState([
+  //    { socketId: 1, username: "ram" },
+  //    { socketId: 1, username: "ram" },
+  //    { socketId: 1, username: "ram" },
+  //  ]);
+
+   const socketRef = useRef(null);
+   const { roomId } = useParams();
+   const codeRef = useRef(null);
+   const location = useLocation();
+   const reactNavigator = useNavigate();
+
 
   useEffect(() => {
     const init = async () => {
@@ -45,13 +52,13 @@ const EditorPage = () => {
         ({ clients, username, socketId }) => {
           if (username !== location.state?.username) {
             toast.success(`${username} joined the room`);
-            console.log(`${username} joined the room`);
+            // console.log(`${username} joined the room`);
           }
           setClients(clients);
-          socketRef.current.emit(ACTIONS.SYNC_CODE,{
+          socketRef.current.emit(ACTIONS.SYNC_CODE, {
             code: codeRef.current,
-            socketId: socketId
-          })
+            socketId: socketId,
+          });
         }
       );
 
@@ -72,17 +79,19 @@ const EditorPage = () => {
     };
   }, []);
 
-  async function copyId(){
+
+
+  async function copyId() {
     try {
-      await navigator.clipboard.writeText(roomId)
+      await navigator.clipboard.writeText(roomId);
       toast.success(`Room ID has been copied`);
     } catch (error) {
-      toast.error('Could not copy Room ID');
+      toast.error("Could not copy Room ID");
       console.log(error);
     }
   }
 
-  function leaveRoom(){
+  function leaveRoom() {
     reactNavigator("/");
   }
 
@@ -92,6 +101,7 @@ const EditorPage = () => {
 
   return (
     <div className="mainWrap">
+      {/* --------------------- Left ----------------------------- */}
       <div className="left">
         <div className="leftInner">
           <div className="logo">
@@ -108,11 +118,22 @@ const EditorPage = () => {
             ))}
           </div>
         </div>
-        <button className="btn copyBtn" onClick={copyId}>Copy Room Id</button>
-        <button className="btn leaveBtn" onClick={leaveRoom}>Leave</button>
+        <button className="btn copyBtn" onClick={copyId}>
+          Copy Room Id
+        </button>
+        <button className="btn leaveBtn" onClick={leaveRoom}>
+          Leave
+        </button>
       </div>
+      {/* ----------------------------- Right ---------------------------- */}
       <div className="right">
-        <Editor socketRef={socketRef} roomId={roomId} onCodeChange={(code)=>{codeRef.current = code}}/>
+        <Editor
+          socketRef={socketRef}
+          roomId={roomId}
+          onCodeChange={(code) => {
+            codeRef.current = code;
+          }}
+        />
       </div>
     </div>
   );

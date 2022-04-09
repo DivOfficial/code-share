@@ -10,11 +10,11 @@ function App() {
       {/* toast conntainer for showing toast */}
       <div>
         <Toaster
-          position="top-right"
+          position="top-center"
           toastOptions={{
             success: {
               theme: {
-                primary: "#4aed88",
+                primary: 'green',
               },
             },
           }}
@@ -23,6 +23,8 @@ function App() {
 
       <BrowserRouter>
         <Routes>
+          {/* path define konse page pr jana h 
+          element tell konsa element render krna h */}
           <Route path="/" element={<Home />}></Route>
           <Route path="/editor/:roomId" element={<EditorPage />}></Route>
         </Routes>

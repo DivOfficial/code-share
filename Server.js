@@ -34,7 +34,6 @@ io.on("connection", (Socket) => {
     userSocketMap[Socket.id] = username;
     Socket.join(roomId);
     const clients = getAllConnectedClients(roomId);
-    //   console.log(clients);
     clients.forEach(({ socketId }) => {
       io.to(socketId).emit(ACTIONS.JOINED, {
         clients,
@@ -44,14 +43,13 @@ io.on("connection", (Socket) => {
     });
   });
 
-  Socket.on(ACTIONS.CODE_CHANGE,({roomId, code})=>{
-    Socket.in(roomId).emit(ACTIONS.CODE_CHANGE,{code});
-  })
+  Socket.on(ACTIONS.CODE_CHANGE, ({ roomId, code }) => {
+    Socket.in(roomId).emit(ACTIONS.CODE_CHANGE, { code });
+  });
 
-    Socket.on(ACTIONS.SYNC_CODE, ({ socketId, code }) => {
-      io.to(socketId).emit(ACTIONS.CODE_CHANGE, { code });
-    });
-
+  Socket.on(ACTIONS.SYNC_CODE, ({ socketId, code }) => {
+    io.to(socketId).emit(ACTIONS.CODE_CHANGE, { code });
+  });
 
   Socket.on("disconnecting", () => {
     const rooms = [...Socket.rooms];
