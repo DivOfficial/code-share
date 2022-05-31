@@ -13,6 +13,7 @@
   width: 350px;
   /* height: 70%; */
   max-width: 90%;
+  border: 2px solid black;
 }
 
 footer{
